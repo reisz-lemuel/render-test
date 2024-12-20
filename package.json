@@ -8,6 +8,11 @@
   "scripts": {
     "start": "npm run start:backend & npm run start:frontend",
     "start:frontend": "cd frontend && npm run dev",
-    "start:backend": "cd backend && npm start"
+    "start:backend": "cd backend && npm start",
+    "build:ui": "rmdir /s /q backend\\dist && cd frontend && npm run build && xcopy /e /i /h /y dist\\* ..\\backend\\dist\\",
+    "deploy:full": "npm run build:ui && git add . && git commit -m 'uibuild' && git push"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }
